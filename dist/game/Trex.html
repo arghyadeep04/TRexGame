@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Game</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        width: 50vw;
+    }
+
+    .back {
+        position: relative;
+        top: 10vh;
+        height: 80vh;
+        width: 100vw;
+        background-size: 100vw 80vh;
+        margin: 0;
+        padding: 0;
+        animation: bgm 30s linear infinite alternate-reverse;
+    }
+
+    .dino,
+    .dinoimg {
+        height: 20vh;
+        width: 18vw;
+        position: absolute;
+        top: 25vh;
+        z-index: 5;
+    }
+
+    .cloud1 {
+        height: 20vh;
+        width: 20vw;
+        position: absolute;
+        top: 5vh;
+        animation: cloud1m 10s linear 0s infinite;
+        z-index: 2;
+    }
+
+    .cloud2 {
+        height: 20vh;
+        width: 20vw;
+        position: absolute;
+        top: 10vh;
+        left: 50vw;
+        animation: cloud2m 16s linear 0s infinite;
+        z-index: 2;
+        
+    }
+
+    .gameover {
+        font-size: 15vh;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        position: absolute;
+        top: 10vh;
+        left: 20vw;
+        width: 50vw;
+        color: red;
+        visibility: hidden;
+        z-index: 6;
+        background-color: rgb(66, 159, 29);
+        border-radius: 20%;
+        text-align: center;
+    }
+
+    @keyframes cloud1m {
+        from {
+            transform: translateX(120vw);
+        }
+
+        to {
+            transform: translateX(-40vw);
+        }
+    }
+
+    @keyframes cloud2m {
+        from {
+            transform: translateX(150vw)
+        }
+
+        to {
+            transform: translateX(-90vw);
+        }
+    }
+
+    .sun {
+        background-color: rgb(255, 247, 177);
+        border-radius: 50%;
+        position: relative;
+        top: 10vh;
+        left: 10vw;
+        height: 10vh;
+        width: 10vh;
+        box-shadow: 0px 0px 40px 20px rgb(240, 255, 163);
+        transform: translateX(10vh);
+        animation: sun 30s linear 0s infinite alternate-reverse;
+        z-index: 1;
+    }
+
+    .grass {
+        height: 20vh;
+        width: 100vw;
+        position: absolute;
+        bottom: 0.1vh;
+        animation: grass1m 5.71428s linear 0s infinite;
+        z-index: 4;
+
+
+    }
+
+    .grass2 {
+        height: 20vh;
+        width: 100vw;
+        position: absolute;
+        bottom: 0.1vh;
+        animation: grass2m 5.71428s linear 0s infinite;
+        z-index: 4;
+
+    }
+
+    .cactus ,.snake {
+        position: absolute;
+        top: 29vh;
+        animation: cactusm 16s linear 0s infinite;
+        height: 15vh;
+        width: 10vw;
+        z-index: 3;
+    }
+    .snake{
+        animation: snakem 16s linear 0s infinite;
+        left: 105vw;
+    }
+
+    .ground {
+        position: absolute;
+        height: 15vh;
+        width: 100vw;
+        animation: field 30s linear 0s infinite alternate-reverse;
+        top: 65vh;
+        z-index: 2;
+    }
+
+    @keyframes sun {
+        from {
+            transform: translateY(0vh);
+            background-color: rgb(255, 247, 177);
+            box-shadow: 0px 0px 40px 20px rgb(240, 255, 163);
+        }
+
+        to {
+            transform: translateY(60vh);
+            background-color: rgb(255, 203, 33);
+            box-shadow: 0px 0px 40px 20px rgb(238, 191, 111)
+        }
+
+    }
+
+    @keyframes moon {
+        from {
+            opacity: 0%;
+        }
+
+        40% {
+            opacity: 0%;
+        }
+
+        to {
+            opacity: 100%;
+        }
+
+    }
+
+    @keyframes field {
+        from {
+            background-color: rgb(199, 138, 33);
+        }
+
+        50% {
+            background-color: rgb(199, 91, 33);
+        }
+
+        to {
+            background-color: rgb(54, 45, 0);
+        }
+
+    }
+
+    @keyframes bgm {
+        from {
+            background-color: skyblue;
+        }
+
+        50% {
+            background-color: rgb(236, 137, 56);
+        }
+
+        to {
+            background-color: rgb(2, 0, 72);
+        }
+    }
+
+    @keyframes jump1 {
+        0% {
+            top: 25vh;
+        }
+
+        50% {
+            top: 10vh;
+        }
+
+        100% {
+            top: 25vh;
+        }
+    }
+
+    @keyframes jump4 {
+        0% {
+            top: 25vh;
+        }
+
+        50% {
+            top: -5vh;
+        }
+
+        100% {
+            top: 25vh;
+        }
+    }
+
+    @keyframes jump2 {
+        0% {
+            top: 25vh;
+        }
+
+        50% {
+            top: 5vh;
+        }
+
+        100% {
+            top: 25vh;
+        }
+    }
+
+    @keyframes jump3 {
+        0% {
+            top: 25vh;
+        }
+
+        50% {
+            top: 0vh;
+        }
+
+        100% {
+            top: 25vh;
+        }
+    }
+
+    @keyframes cactusm {
+        0% {
+            left: 55vw;
+        }
+
+        50% {
+            left: -15vw;
+        }
+        100% {
+            left: -15vw;
+        }
+    }
+    @keyframes snakem {
+        0% {
+            left: 55vw;
+        }
+
+        50% {
+            left: 55vw;
+        }
+        100% {
+            left: -15vw;
+        }
+    }
+
+    @keyframes grass1m {
+        from {
+            left: 0vw
+        }
+
+        to {
+            left: -50vw;
+        }
+    }
+
+    @keyframes grass2m {
+        from {
+            left: 50vw;
+        }
+
+        to {
+            left: 0vw;
+        }
+    }
+
+    .moon {
+
+        width: 7vw;
+        height: 7vw;
+        border-radius: 50%;
+        /* I set 2 shadows where the first one doesn't have blur and spread for firefox fix. */
+        box-shadow: inset 0px 25px #fff5b7, inset 5px 16px 5px 5px #fff5b7;
+        transform: rotate(120deg);
+        animation: moon 30s linear 0s infinite alternate-reverse;
+        position: absolute;
+        left: 10vw;
+        top: 10vh;
+    }
+
+    .score {
+        position: absolute;
+        top: -10vh;
+        left: 80vw;
+        color: rgb(255, 0, 0);
+        height: 5vh;
+        width: 5vw;
+        border-radius: 50%;
+        text-align: center;
+        padding: 2vh;
+        font-size: 5vh;
+        font-family: 'Times New Roman', Times, serif;
+        z-index: 6;
+    }
+
+    .plate {
+        position: absolute;
+        top: -10vh;
+        left: 70vw;
+        color: rgb(93, 0, 255);
+        padding: 2vh;
+        font-size: 5vh;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .music {
+        position: absolute;
+        top: 1vh;
+        left: 15vw;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 1.5vw;
+        text-align: center;
+        background-color: aqua;
+        border-radius: 20%;
+        border: 3px solid blue;
+        width: 9.5vw;
+    }
+
+    .playm {
+        position: absolute;
+        top: 4.55vh;
+        left: 15vw;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 1.5vw;
+        border: 3px solid blue;
+        border-radius: 10%;
+        width: 10vw;
+
+    }
+
+    .game {
+        position: absolute;
+        top: 1vh;
+        left: 30vw;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 1.5vw;
+        text-align: center;
+        background-color: aqua;
+        border-radius: 20%;
+        border: 3px solid blue;
+        width: 9.5vw;
+        
+    }
+
+    .playg {
+        position: absolute;
+        top: 4.55vh;
+        left: 30vw;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 1.5vw;
+        border: 3px solid blue;
+        border-radius: 10%;
+        width: 10vw;
+
+    }
+
+    .cloudi {
+        height: 20vh;
+        width: 20vw;
+    }
+    .ins{
+        color: crimson;
+        position: absolute;
+        top: 90vh;
+        height: 6vh;
+        width: 100vw;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 1vw;
+        font-size: 5vh;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 1vw;
+        animation: blur 5s linear 0s 1 forwards;
+    }
+    @keyframes blur {
+        0%{visibility: visible;}
+        100%{visibility: hidden;}
+    }
+    .go{
+        position: absolute;
+        left: 50vw;
+        top: 1vh;
+        height: 9vh;
+        width: 10vw;
+        border: 0.5vh solid red;
+        background-color: aqua;
+        border-radius: 1vh;
+        color: blue;
+        font-size: 3vh;
+        font-family: Arial, Helvetica, sans-serif;
+        visibility: hidden;
+    }
+    .go:hover{
+        background-color: #00789f;
+    }
+    .roller{
+        position: absolute;
+        top: 1vh;
+        left: 63vw;
+    }
+</style>
+
+<body>
+    <div class="back" id="background">
+        <div class="ground" id="ground"></div>
+        <div class="dino" id="trex"><img
+                src="https://www.genesispark.com/wp-content/uploads/2015/01/t-rex-walking-250x125-t-w-1.gif" alt=""
+                class="dinoimg" id="trexi"></div>
+        <div class="sun"></div>
+        <div class="cloud1" id="cloud1"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
+                alt="" class="cloudi"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
+                alt="" class="cloudi"></div>
+        <div class="cloud2" id="cloud2"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
+                alt="" class="cloudi"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
+                alt="" class="cloudi"></div>
+        <div class="grass" id="grass1"><img
+                src="grass2.png"
+                alt="" class="grass"></div>
+        <div class="grass2" id="grass2"><img
+                src="grass2.png"
+                alt="" class="grass2"></div>
+        <div class="cactus" id="cactus1"><img
+                src="https://www.freeiconspng.com/thumbs/cactus-png/cactus-png-17.png"
+                alt="" class="cactus"></div>
+                <div class="snake" id="snake"><img
+                    src="https://th.bing.com/th/id/R.3efd2ee71142ecdecb825276878f2c69?rik=t5LRGmK%2f%2f2bL2g&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f03%2fSnake-Transparent-180x180.png&ehk=l1b7%2fh%2bW0UH0lEy2wdgeq%2bhXbbquHaIkqeFpagBoHuQ%3d&risl=&pid=ImgRaw&r=0"
+                    alt="" class="snake"></div>
+        <div class="score" id="score">0</div>
+        <div id="plate" class="plate">Score</div>
+        <div class="gameover" id="gameover">Game Over</div>
+        <div id="moon" class="moon"></div>
+    </div>
+    <div class="controls">
+    <div class="music" id="music">Music(M)</div>
+    <button class="playm" id="playm">Pause</button>
+    <div class="game" id="game">Game(G)</div>
+    <button class="playg" id="playg">Pause</button>
+    <div class="form" id="form">
+        <form action="" id="updater">
+            <input type="number" name="last" id="last">
+            <button class="go" id="go" type="submit">Next</button>
+        </form>
+        <div class="roller">
+            <span id="loading"></span>
+          </div>
+    </div>
+    </div>
+    <div class="ins"><div>Press Space bar,1,2,3,4 to jump</div><div>Press M to play/pause music</div><div>Press G to play/pause game</div>
+    <span style="visibility: hidden;" id="code">game</span>
+    <script>
+        let lostf = 0
+        let n = 0
+        let sf = 1
+        let trtop = 0
+        let trleft = 0
+        let cactop = 0
+        let cacleft = 0
+        let obs=0
+        audio = new Audio("music.mp3");
+        audiogo = new Audio("gameover.mp3");
+        audjump = new Audio("jump2.mp3")
+        audio.play()
+        let autoplay=setInterval(function () {
+            audio.play()
+            document.getElementById("playm").innerHTML="Pause"
+        }, 30000);
+        function stopjump() {
+            document.getElementById("trex").style.animation = "";
+            n = 0;
+            audjump.pause()
+            audjump.load()
+        }
+        function jumper(m) {
+            if (n == 0 && !(lostf) && document.getElementById("playg").innerHTML == "Pause") {
+                n = 1;
+                audjump.play()
+                t=(1+0.3333*(m-1))/1.2
+                document.getElementById("trex").style.animation = "jump"+m+" "+t+"s linear 0s 1"
+                setTimeout(stopjump, 1000*t)
+            }
+        }
+        let ran= 1;
+        function increase() {
+            ran= Math.floor((Math.random() * 4) + 1);
+            
+            let time = parseFloat(window.getComputedStyle(document.getElementsByClassName("cactus")[0], null).getPropertyValue("animation-duration"))
+            document.getElementsByClassName("cactus")[0].style.animationDuration = (time / 1.01) + "s"
+            document.getElementsByClassName("cactus")[1].style.animationDuration = (time / 1.01) + "s"
+            document.getElementsByClassName("snake")[0].style.animationDuration = (time / 1.01) + "s"
+            document.getElementsByClassName("snake")[1].style.animationDuration = (time / 1.01) + "s"
+            let time2 = parseFloat(window.getComputedStyle(document.getElementsByClassName("grass")[0], null).getPropertyValue("animation-duration"))
+            // document.getElementById("grass1").style.animationDuration = (time2 / 1.01) + "s"
+            document.getElementsByClassName("grass")[0].style.animationDuration = (time2 / 1.01) + "s"
+            document.getElementsByClassName("grass2")[0].style.animationDuration = (time2 / 1.01) + "s"
+            document.getElementsByClassName("grass")[1].style.animationDuration = (time2 / 1.01) + "s"
+            document.getElementsByClassName("grass2")[1].style.animationDuration = (time2 / 1.01) + "s"
+            // console.log(parseFloat(window.getComputedStyle(document.getElementById("cactus1"), null).getPropertyValue("animation-duration")))
+            document.getElementsByClassName("cactus")[0].style.width=8*ran+'vw'
+            document.getElementsByClassName("cactus")[1].style.width=8*ran+'vw'
+            document.getElementsByClassName("snake")[0].style.width=8*ran+'vw'
+            document.getElementsByClassName("snake")[1].style.width=8*ran+'vw'
+            // document.getElementsByClassName("cactus")[0].style.height=15+10*(ran-1)+'vh'
+            // document.getElementsByClassName("cactus")[1].style.height=15+10*(ran-1)+'vh'
+            // document.getElementsByClassName("snake")[0].style.height=15+10*(ran-1)+'vh'
+            // document.getElementsByClassName("snake")[1].style.height=15+10*(ran-1)+'vh'
+        }
+        document.getElementById("cactus1").addEventListener("animationiteration", increase)
+        document.addEventListener("keypress", function () { 
+            if (event.code == "Space" || event.code == "Digit1") { 
+                jumper(1) 
+            }
+            else if(event.code == "Digit2"){
+                jumper(2)
+            }
+            else if(event.code == "Digit3"){
+                jumper(3)
+            }
+            else if(event.code == "Digit4"){
+                jumper(4)
+            }  })
+        document.getElementById("background").addEventListener("click", ()=>{jumper(1)})
+        function lost() {
+            trtop = parseInt(window.getComputedStyle(document.getElementById("trex"), null).getPropertyValue("top"))
+            trleft = parseInt(window.getComputedStyle(document.getElementById("trex"), null).getPropertyValue("left"))
+            cactop = parseInt(window.getComputedStyle(document.getElementById("cactus1"), null).getPropertyValue("top"))
+            cacleft = parseInt(window.getComputedStyle(document.getElementById("cactus1"), null).getPropertyValue("left"))
+            snktop = parseInt(window.getComputedStyle(document.getElementById("snake"), null).getPropertyValue("top"))
+            snkleft = parseInt(window.getComputedStyle(document.getElementById("snake"), null).getPropertyValue("left"))
+            dctop = Math.abs(trtop - cactop)
+            dcleft = Math.abs(trleft - cacleft)
+            dstop = Math.abs(trtop - snktop)
+            dsleft = Math.abs(trleft - snkleft)
+            // console.log("WH",(window.innerWidth)/100,parseInt(window.innerHeight)/13)
+            //console.log(dleft,dtop)
+            console.log(ran)
+            if ((dcleft < ran*(parseInt(window.innerWidth) / 98) && dctop < (parseInt(window.innerHeight) / 13))||(dsleft < ran*(parseInt(window.innerWidth) / 93) && dstop < (parseInt(window.innerHeight) / 12))) {
+                document.getElementById("trex").style.animationPlayState = "paused"
+                document.getElementById("grass1").style.animationPlayState = "paused"
+                document.getElementsByClassName("grass")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("grass2")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("grass")[1].style.animationPlayState = "paused"
+                document.getElementsByClassName("grass2")[1].style.animationPlayState = "paused"
+                document.getElementById("cloud1").style.animationPlayState = "paused"
+                document.getElementById("cloud2").style.animationPlayState = "paused"
+                document.getElementById("gameover").style.visibility = "visible"
+                document.getElementById("background").style.animationPlayState = "paused"
+                document.getElementById("ground").style.animationPlayState = "paused"
+                document.getElementsByClassName("cactus")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("snake")[1].style.animationPlayState = "paused"
+                document.getElementsByClassName("snake")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("cactus")[1].style.animationPlayState = "paused"
+                document.getElementsByClassName("sun")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("moon")[0].style.animationPlayState = "paused"
+                document.getElementById("trex").innerHTML = "<img src='https://th.bing.com/th/id/R.6274b1fc8d893be3e21e5562466d00ca?rik=a3qllJmH6PTTbA&riu=http%3a%2f%2fpluspng.com%2fimg-png%2ft-rex-dinosaurs-png-file-t-rex-dinosaur-clip-art-t-rex-500.png&ehk=ovyZMFqXWgY%2f6crc0lW4RpZ%2bBa4aevKZ1a6KrhCoTps%3d&risl=&pid=ImgRaw&r=0' class='dinoimg' id='trexi'>"
+                // document.getElementById("trex").style.transform = "rotateX(60deg)"
+                // document.getElementById("trex").style.top = "40vh"
+                clearInterval(p)
+                clearInterval(autoplay)
+                audio.pause()
+                audiogo.play()
+                setTimeout(function () { audiogo.pause() }, 1000)
+                lostf = 1
+                document.getElementById("music").style.visibility = "hidden"
+                document.getElementById("playm").style.visibility = "hidden"
+                document.getElementById("game").style.visibility = "hidden"
+                document.getElementById("playg").style.visibility = "hidden"
+                document.getElementById("go").style.visibility = "visible"
+                document.getElementById('last').value=parseInt(document.getElementById('score').innerHTML)
+
+            }
+            else {
+                document.getElementById("score").innerHTML = (parseInt(document.getElementById("score").innerHTML) + sf)
+            }
+
+
+        }
+        let p = setInterval(lost, 10)
+        function playpausem() {
+            if (document.getElementById("playm").innerHTML == "Pause" && lostf == 0) {
+                audio.pause()
+                clearTimeout(autoplay)
+                document.getElementById("playm").innerHTML = "Play"
+            }
+            else if (document.getElementById("playm").innerHTML == "Play" && lostf == 0) {
+                audio.play()
+                autoplay=setTimeout(()=>{audio.play()},30000)
+                document.getElementById("playm").innerHTML = "Pause"
+            }
+        }
+        function playpauseg() {
+            if (document.getElementById("playg").innerHTML == "Pause" && lostf == 0) {
+
+                document.getElementById("playg").innerHTML = "Play"
+                document.getElementById("trex").style.animationPlayState = "paused"
+                document.getElementById("grass1").style.animationPlayState = "paused"
+                document.getElementsByClassName("grass")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("grass2")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("grass")[1].style.animationPlayState = "paused"
+                document.getElementsByClassName("grass2")[1].style.animationPlayState = "paused"
+                document.getElementById("cloud1").style.animationPlayState = "paused"
+                document.getElementById("cloud2").style.animationPlayState = "paused"
+
+                document.getElementById("background").style.animationPlayState = "paused"
+                document.getElementById("ground").style.animationPlayState = "paused"
+                document.getElementsByClassName("cactus")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("cactus")[1].style.animationPlayState = "paused"
+                document.getElementsByClassName("snake")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("snake")[1].style.animationPlayState = "paused"
+                clearInterval(p)
+                document.getElementsByClassName("sun")[0].style.animationPlayState = "paused"
+                document.getElementsByClassName("moon")[0].style.animationPlayState = "paused"
+                playpausem()
+                document.getElementById("trex").innerHTML = "<img src='https://th.bing.com/th/id/R.aa7a960e19e62ad11cb06c9ea67dbcee?rik=fHIz2s5O5SR8dQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2ft-rex-png-hd-t-rex-2-png-915.png&ehk=aVWkZL6SrS3IQD6kZAo0AW8MZtnvmq0fajNIhHf4sjQ%3d&risl=&pid=ImgRaw&r=0' id='trexi' class='dinoimg' >"
+            }
+            else if (document.getElementById("playg").innerHTML == "Play" && lostf == 0) {
+                audio.play()
+                document.getElementById("playg").innerHTML = "Pause"
+
+                document.getElementById("trex").style.animationPlayState = "running"
+                // document.getElementById("grass1").style.animationPlayState = "running"
+                document.getElementsByClassName("grass")[0].style.animationPlayState = "running"
+                document.getElementsByClassName("grass2")[0].style.animationPlayState = "running"
+                document.getElementsByClassName("grass")[1].style.animationPlayState = "running"
+                document.getElementsByClassName("grass2")[1].style.animationPlayState = "running"
+                document.getElementById("cloud1").style.animationPlayState = "running"
+                document.getElementById("cloud2").style.animationPlayState = "running"
+                document.getElementById("playm").innerHTML = "Pause"
+                document.getElementById("background").style.animationPlayState = "running"
+                document.getElementById("ground").style.animationPlayState = "running"
+                document.getElementsByClassName("cactus")[0].style.animationPlayState = "running"
+                document.getElementsByClassName("cactus")[1].style.animationPlayState = "running"
+                p = setInterval(lost, 10)
+                document.getElementsByClassName("snake")[0].style.animationPlayState = "running"
+                document.getElementsByClassName("snake")[1].style.animationPlayState = "running"
+                document.getElementsByClassName("sun")[0].style.animationPlayState = "running"
+                document.getElementsByClassName("moon")[0].style.animationPlayState = "running"
+                document.getElementById("trex").innerHTML = "<img src='https://www.genesispark.com/wp-content/uploads/2015/01/t-rex-walking-250x125-t-w-1.gif' alt='' class='dinoimg' id='trexi'>"
+            }
+        }
+        document.getElementById("playm").addEventListener("click", playpausem)
+        document.addEventListener("keypress", function () {
+            // console.log(event.code)
+            if (event.code == 'KeyM') {
+                // console.log(event.code)
+                playpausem()
+            }
+        })
+        document.addEventListener("keypress", function () {
+            // console.log(event.code)
+            if (event.code == 'KeyG') {
+                // console.log(event.code)
+                playpauseg()
+            }
+        })
+
+        document.getElementById("playg").addEventListener("click", playpauseg)
+        document.getElementById('go').addEventListener('click',()=>{
+            document.getElementById('loading').innerHTML='Loading...'
+        })
+    </script>
+    <script src="../bundle.js"></script>
+</body>
+
+</html>

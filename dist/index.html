@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+    .modbox{
+      padding: 2vw;
+    }
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+    #logroller, #signroller{
+      visibility: hidden;
+    }
+    body{
+      background-image: linear-gradient(yellow,red);
+      background-size:100vw 100vh;
+ 
+    }
+    .dino1{
+      position: absolute;
+      top: 100px;
+      left: 5vw;
+    }
+    .dino2{
+      position: absolute;
+      top: 100px;
+      right: 5vw;
+      transform: rotateY(180deg);
+    }
+    .dinimg{
+      width: 40vw;
+    }
+  </style>
+  <body>
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-8 col-md-7 py-4">
+                <h4 class="text-white">About</h4>
+                <p class="text-muted">We are a team of individuals from multiple disciplines, driven by the desire of implementing solutions ubounded by the limits of knowledge or techical know-how. Cyberlabs is the official programming club of IIT(ISM) Dhanbad which acts as a platform for the people enthusiastic about technology to work together.It was founded post inpiration on the footsteps of MIT MEDIA LABS by an enthusiatic and ticking learner who discovered a scope beyond rote learning and plain-vanilla implementations of the common problems and sci-fi solutions.
+
+                  We, at Cyberlabs work in many feilds, namely, Web, Android, Machine learning and Deep learning, Hardware, Information Security, Competitive coding, Data analytics, Graphics Designing, OSS and UX. Regular sessions are held for each field. The main aim of our club is to promote a diverse product development as well as R&D Culture amongst the students of IIT(ISM), Dhanbad.</p>
+              </div>
+              <div class="col-sm-4 offset-md-1 py-4">
+                <h4 class="text-white">Contact</h4>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="text-white">Follow on Twitter</a></li>
+                  <li><a href="#" class="text-white">Like on Facebook</a></li>
+                  <li><a href="#" class="text-white">Email us</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+          <div class="container">
+            <a href="#" class="navbar-brand d-flex align-items-center">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> -->
+              <strong>CyberLabs</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">The T-rex Runner Game</h1>
+            <p class="lead text-muted">A fun Game with simple Graphics and animation</p><br><br>
+            <p>
+                            <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signup">
+                Sign Up
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="signup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content modbox">
+                    <div class="modal-header">
+                      <h3>Sign Up here</h3>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div><br>
+                      <form  class="signup">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="signemail" aria-describedby="emailHelp" name="signemail" required>
+                          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Username</label>
+                          <input type="text" class="form-control" id="signuser" aria-describedby="emailHelp" name="signuser" required>
+                          <div id="userhelp" class="form-text" style="color: red;"></div>
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="signpass" name="signpass" required>
+                          <div id="userhelp" class="form-text">Password should be atleast of 6 characters</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="signupbutton">Sign Up</button>
+                        </form><br>
+                      <div class="d-flex justify-content-center" id="signroller">
+                        <div class="spinner-border" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                      </div>
+                      
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
+                Login
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content modbox">
+                    <div class="modal-header">
+                      <h3>Login here</h3>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <form class="login">
+                      <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="loguser" aria-describedby="emailHelp" name="loguser" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="logpass" name="logpass" required>
+                      </div>
+                      <button type="submit" class="btn btn-primary" id="loginbutton">Login</button>
+                      
+                    </form><br>
+                    <div class="d-flex justify-content-center roller" id="logroller">
+                      <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <br><br><a href="leaderboard.html"><button type="button" class="btn btn-primary">LeaderBoards</button></a>
+
+              
+            </p>
+          </div>
+        </div>
+      </section>
+      <div class="dino1"><img src="https://freepngimg.com/thumb/octopus/51363-4-t-rex-free-clipart-hq.png" alt="" class="dinimg"></div>
+      <div class="dino2"><img src="https://freepngimg.com/thumb/octopus/51363-4-t-rex-free-clipart-hq.png" alt="" class="dinimg"> </div>
+
+      <span style="visibility: hidden;" id="code">index</span>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script src="bundle.js"></script>
+  </body>
+</html>
