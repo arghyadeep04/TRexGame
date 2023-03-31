@@ -448,14 +448,14 @@
     <div class="back" id="background">
         <div class="ground" id="ground"></div>
         <div class="dino" id="trex"><img
-                src="https://www.genesispark.com/wp-content/uploads/2015/01/t-rex-walking-250x125-t-w-1.gif" alt=""
+                src="genesispark.gif" alt=""
                 class="dinoimg" id="trexi"></div>
         <div class="sun"></div>
-        <div class="cloud1" id="cloud1"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
-                alt="" class="cloudi"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
+        <div class="cloud1" id="cloud1"><img src="freeiconspng.png"
+                alt="" class="cloudi"><img src="freeiconspng.png"
                 alt="" class="cloudi"></div>
-        <div class="cloud2" id="cloud2"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
-                alt="" class="cloudi"><img src="https://www.freeiconspng.com/thumbs/rain-png/rain-clouds-png-27.png"
+        <div class="cloud2" id="cloud2"><img src="freeiconspng.png"
+                alt="" class="cloudi"><img src="freeiconspng.png"
                 alt="" class="cloudi"></div>
         <div class="grass" id="grass1"><img
                 src="grass2.png"
@@ -464,10 +464,10 @@
                 src="grass2.png"
                 alt="" class="grass2"></div>
         <div class="cactus" id="cactus1"><img
-                src="https://www.freeiconspng.com/thumbs/cactus-png/cactus-png-17.png"
+                src="cactusnew.png"
                 alt="" class="cactus"></div>
                 <div class="snake" id="snake"><img
-                    src="https://th.bing.com/th/id/R.3efd2ee71142ecdecb825276878f2c69?rik=t5LRGmK%2f%2f2bL2g&riu=http%3a%2f%2fwww.pngall.com%2fwp-content%2fuploads%2f2016%2f03%2fSnake-Transparent-180x180.png&ehk=l1b7%2fh%2bW0UH0lEy2wdgeq%2bhXbbquHaIkqeFpagBoHuQ%3d&risl=&pid=ImgRaw&r=0"
+                    src="snake.png"
                     alt="" class="snake"></div>
         <div class="score" id="score">0</div>
         <div id="plate" class="plate">Score</div>
@@ -503,7 +503,7 @@
         audio = new Audio("music.mp3");
         audiogo = new Audio("gameover.mp3");
         audjump = new Audio("jump2.mp3")
-        audio.play()
+        setTimeout(()=>{audio.play()},1000)
         let autoplay=setInterval(function () {
             audio.play()
             document.getElementById("playm").innerHTML="Pause"
@@ -595,7 +595,7 @@
                 document.getElementsByClassName("cactus")[1].style.animationPlayState = "paused"
                 document.getElementsByClassName("sun")[0].style.animationPlayState = "paused"
                 document.getElementsByClassName("moon")[0].style.animationPlayState = "paused"
-                document.getElementById("trex").innerHTML = "<img src='https://th.bing.com/th/id/R.6274b1fc8d893be3e21e5562466d00ca?rik=a3qllJmH6PTTbA&riu=http%3a%2f%2fpluspng.com%2fimg-png%2ft-rex-dinosaurs-png-file-t-rex-dinosaur-clip-art-t-rex-500.png&ehk=ovyZMFqXWgY%2f6crc0lW4RpZ%2bBa4aevKZ1a6KrhCoTps%3d&risl=&pid=ImgRaw&r=0' class='dinoimg' id='trexi'>"
+                document.getElementById("trex").innerHTML = "<img src='deaddino.png' class='dinoimg' id='trexi'>"
                 // document.getElementById("trex").style.transform = "rotateX(60deg)"
                 // document.getElementById("trex").style.top = "40vh"
                 clearInterval(p)
@@ -654,7 +654,7 @@
                 document.getElementsByClassName("sun")[0].style.animationPlayState = "paused"
                 document.getElementsByClassName("moon")[0].style.animationPlayState = "paused"
                 playpausem()
-                document.getElementById("trex").innerHTML = "<img src='https://th.bing.com/th/id/R.aa7a960e19e62ad11cb06c9ea67dbcee?rik=fHIz2s5O5SR8dQ&riu=http%3a%2f%2fpluspng.com%2fimg-png%2ft-rex-png-hd-t-rex-2-png-915.png&ehk=aVWkZL6SrS3IQD6kZAo0AW8MZtnvmq0fajNIhHf4sjQ%3d&risl=&pid=ImgRaw&r=0' id='trexi' class='dinoimg' >"
+                document.getElementById("trex").innerHTML = "<img src='stopdino.png' id='trexi' class='dinoimg' >"
             }
             else if (document.getElementById("playg").innerHTML == "Play" && lostf == 0) {
                 audio.play()
@@ -678,7 +678,7 @@
                 document.getElementsByClassName("snake")[1].style.animationPlayState = "running"
                 document.getElementsByClassName("sun")[0].style.animationPlayState = "running"
                 document.getElementsByClassName("moon")[0].style.animationPlayState = "running"
-                document.getElementById("trex").innerHTML = "<img src='https://www.genesispark.com/wp-content/uploads/2015/01/t-rex-walking-250x125-t-w-1.gif' alt='' class='dinoimg' id='trexi'>"
+                document.getElementById("trex").innerHTML = "<img src='www.genesispark.gif' alt='' class='dinoimg' id='trexi'>"
             }
         }
         document.getElementById("playm").addEventListener("click", playpausem)
