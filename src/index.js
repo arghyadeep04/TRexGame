@@ -113,7 +113,7 @@ loginer.addEventListener('submit',(e)=>{
             window.alert('Sorry, Username doesnt Exist')
             document.getElementById('logroller').style.visibility='hidden'
         }
-    },3000)
+    },4000)
     
 
 })
