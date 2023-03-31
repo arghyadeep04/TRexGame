@@ -128,7 +128,7 @@
 
     .cactus ,.snake {
         position: absolute;
-        top: 29vh;
+        top: 28vh;
         animation: cactusm 16s linear 0s infinite;
         height: 15vh;
         width: 10vw;
@@ -525,8 +525,8 @@
         }
         let ran= 1;
         function increase() {
-            ran= Math.floor((Math.random() * 4) + 1);
-            
+            ran= Math.floor((Math.random() * 4) + 1); //random width
+            //speed up
             let time = parseFloat(window.getComputedStyle(document.getElementsByClassName("cactus")[0], null).getPropertyValue("animation-duration"))
             document.getElementsByClassName("cactus")[0].style.animationDuration = (time / 1.01) + "s"
             document.getElementsByClassName("cactus")[1].style.animationDuration = (time / 1.01) + "s"
@@ -543,10 +543,7 @@
             document.getElementsByClassName("cactus")[1].style.width=8*ran+'vw'
             document.getElementsByClassName("snake")[0].style.width=8*ran+'vw'
             document.getElementsByClassName("snake")[1].style.width=8*ran+'vw'
-            // document.getElementsByClassName("cactus")[0].style.height=15+10*(ran-1)+'vh'
-            // document.getElementsByClassName("cactus")[1].style.height=15+10*(ran-1)+'vh'
-            // document.getElementsByClassName("snake")[0].style.height=15+10*(ran-1)+'vh'
-            // document.getElementsByClassName("snake")[1].style.height=15+10*(ran-1)+'vh'
+
         }
         document.getElementById("cactus1").addEventListener("animationiteration", increase)
         document.addEventListener("keypress", function () { 
