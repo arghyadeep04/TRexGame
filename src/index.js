@@ -46,7 +46,7 @@ const firebaseConfig = {
           else{
             createUserWithEmailAndPassword(auth,em,ps)
           .then((credentials)=>{
-              console.log(credentials.user)
+              console.log("created",credentials.user)
               loger.reset()
               addDoc(colref,{
                 username : name,
@@ -59,6 +59,7 @@ const firebaseConfig = {
             })
           })
           .catch((err)=>{
+            console.log(err)
               if(err.code=='auth/internal-error'){
                 window.alert("Please check your internet connection and try again.")
               }
